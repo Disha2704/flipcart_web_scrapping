@@ -9,6 +9,7 @@ logging.basicConfig(filename="scrapper.log" , level=logging.INFO)
 
 app = Flask(__name__)
 
+
 @app.route("/", methods = ['GET'])
 def homepage():
     return render_template("index.html")
@@ -75,10 +76,10 @@ def index():
             logging.info("log my final result {}".format(reviews))
 
             
-            client = pymongo.MongoClient("mongodb+srv://pwskills:pwskills@cluster0.ln0bt5m.mongodb.net/?retryWrites=true&w=majority")
-            db =client['scrapper_eng_pwskills']
-            coll_pw_eng = db['scraper_pwskills_eng']
-            coll_pw_eng.insert_many(reviews)
+            client = pymongo.MongoClient("mongodb+srv://Disha:Dishadevani@cluster0.r00ma9a.mongodb.net/?retryWrites=true&w=majority")
+            db =client['flipcart_product_review']
+            collection= db['web_scraper_flipcart']
+            collection.insert_many(reviews)
 
             return render_template('result.html', reviews=reviews[0:(len(reviews)-1)])
         except Exception as e:
